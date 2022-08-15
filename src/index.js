@@ -18,13 +18,12 @@ function onInputValue(event){
     }
     fetchCountries(inputValue).then(json => {
         let markup = ""       
-        if(inputValue.length <= 1){
+        if(json.length > 10){
             list.innerHTML = ""
             return Notiflix.Notify.info
             ("Too many matches found. Please enter a more specific name.")
         }
         if(json.length >= 2 && json.length <= 10){
-           
             markup =""
             json.map(elem => {     
                 markup += `<li class="item">
@@ -48,10 +47,6 @@ function onInputValue(event){
                 <p><span class="big">Languages:</span>${languages}</p>`
                 divInfo.innerHTML = markup
             })
-        }
-        if(!json.status.ok){
-            list.innerHTML = ""
-            return Notiflix.Notify.failure("Oops, there is no country with that name")
         }
     })
 }
