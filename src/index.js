@@ -19,9 +19,9 @@ function onInputValue(event){
         return        
     }
     fetchCountries(inputValue).then(json => {
-        let markup = ""       
+        let markup = ""      
+       
         if(json.length > 10){
-            
             return Notiflix.Notify.info
             ("Too many matches found. Please enter a more specific name.")
         }
@@ -51,7 +51,7 @@ function onInputValue(event){
             })
         }
     }).catch(error => {
-        return Notiflix.Notify.failure(error)
+        return Notiflix.Notify.failure("Oops, there is no country with that name")
     })
 }
 
