@@ -35,11 +35,8 @@ function onInputValue(event){
                 list.innerHTML = markup
             });
         }
-        if(json.length > 1){
-            divInfo.innerHTML =""
-        }
-        if(json.length === 1){
-            list.innerHTML = ""
+        
+        if(json.length === 1){   
             markup= ""
             json.forEach(elem => {
                 let languages = Object.values(elem.languages).join(", ")
