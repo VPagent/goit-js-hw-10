@@ -24,6 +24,7 @@ function onInputValue(event){
             ("Too many matches found. Please enter a more specific name.")
         }
         if(json.length >= 2 && json.length <= 10){
+           
             markup =""
             json.map(elem => {     
                 markup += `<li class="item">
@@ -32,6 +33,9 @@ function onInputValue(event){
               </li> `
                 list.innerHTML = markup
             });
+        }
+        if(json.length > 1){
+            divInfo.innerHTML =""
         }
         if(json.length === 1){
             list.innerHTML = ""
