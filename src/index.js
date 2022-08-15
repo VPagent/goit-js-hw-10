@@ -12,6 +12,8 @@ const input = document.querySelector("#search-box")
 input.addEventListener("input", debounce(onInputValue, DEBOUNCE_DELAY))
 
 function onInputValue(event){
+    list.innerHTML = ""
+    divInfo.innerHTML =""
     let inputValue = event.target.value.trim()
     if(!inputValue){
         return        
@@ -19,7 +21,7 @@ function onInputValue(event){
     fetchCountries(inputValue).then(json => {
         let markup = ""       
         if(json.length > 10){
-            list.innerHTML = ""
+            
             return Notiflix.Notify.info
             ("Too many matches found. Please enter a more specific name.")
         }
@@ -48,10 +50,13 @@ function onInputValue(event){
                 divInfo.innerHTML = markup
             })
         }
+    }).catch(error => {
+        return Notiflix.Notify.failure(error)
     })
 }
 
 
-
+// list.innerHTML = ""
+//             return Notiflix.Notify.failure("Oops, there is no country with that name")
 
     
