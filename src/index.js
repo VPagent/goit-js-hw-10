@@ -12,7 +12,7 @@ const input = document.querySelector("#search-box")
 input.addEventListener("input", debounce(onInputValue, DEBOUNCE_DELAY))
 
 function onInputValue(event){
-    let inputValue = event.target.value
+    let inputValue = event.target.value.trim()
     if(!inputValue){
         return        
     }
